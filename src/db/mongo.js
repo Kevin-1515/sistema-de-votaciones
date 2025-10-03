@@ -1,3 +1,6 @@
+// se genera la conexión a la base de datos, crear el .env para la uri
+
+
 const mongoose = require("mongoose");
 
 const connectDB = async () => {

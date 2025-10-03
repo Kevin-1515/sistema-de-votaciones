@@ -32,7 +32,7 @@ exports.register = async (req, res) => {
   }
 };
 
-// Login
+// método Login
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -45,7 +45,7 @@ exports.login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ message: "Credenciales inválidas" });
 
-    // Crear token JWT válido por 1h
+    // Crear token JWT válido por 1h , se puede cambiar el parámetro
     const token = jwt.sign(
       { userId: user._id, role: user.role },
       process.env.JWT_SECRET || "secretkey", 
