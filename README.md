@@ -108,6 +108,8 @@ Permite registrar usuarios, votantes, candidatos y registrar votos de manera seg
 
    http://localhost:4000/api/votes/stats/all
 
+![Crear voto](./assets/crear voto.png)
+
 
 
 
