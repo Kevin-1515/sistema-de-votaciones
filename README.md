@@ -25,6 +25,7 @@ Permite registrar usuarios, votantes, candidatos y registrar votos de manera seg
 - Se hace un correcto manejo de errores
 - Se usa una buena estructura arquitectónica para el código
 - para el logeo se usa un único perfil administrador el cual tokeniza y puede acceder a todos los endpoint, de lo contrario será negado
+- cuando se logea la respuesta del servidor entrega un token, este debe ser pegado en el header de cada petición rest ->      Authorization , Bearer <token>
 
 ##  Instalación y ejecución en local
 
@@ -108,7 +109,6 @@ Permite registrar usuarios, votantes, candidatos y registrar votos de manera seg
 
    http://localhost:4000/api/votes/stats/all
 
-![Crear voto](./assets/crear voto.png)
 
 
 
