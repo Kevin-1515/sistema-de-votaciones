@@ -3,6 +3,7 @@ const Voter = require("../models/voter");
 // Crear votante
 exports.createVoter = async (req, res) => {
   try {
+    
     const voter = new Voter(req.body);
     await voter.save();
     res.status(201).json(voter);

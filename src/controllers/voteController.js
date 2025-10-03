@@ -20,7 +20,7 @@ exports.castVote = async (req, res) => {
     const candidate = await Candidate.findById(candidate_id);
     if (!candidate) return res.status(404).json({ error: "Candidato no encontrado" });
 
-    // 4. Validar que el votante no sea también candidato (extra regla de negocio)
+    // 4. Validar que el votante no sea también candidato 
     if (String(voter._id) === String(candidate._id)) {
       return res.status(400).json({ error: "Un votante no puede ser candidato" });
     }
