@@ -3,9 +3,14 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
+// Rutas
+const authRoutes = require("./routes/auth");
 const voterRoutes = require("./routes/voters");
 const candidateRoutes = require("./routes/candidates");
 const voteRoutes = require("./routes/votes");
+
+// Middleware de autenticación
+const authMiddleware = require("./middleware/authMiddleware");
 
 const app = express();
 
@@ -13,10 +18,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Rutas
-app.use("/api/voters", voterRoutes);
-app.use("/api/candidates", candidateRoutes);
-app.use("/api/votes", voteRoutes);
+// Rutas públicas
+app.use("/auth", authRoutes);
+
+// Rutas protegidas (necesitan token JWT)
+app.use("/api/voters", authMiddleware, voterRoutes);
+app.use("/api/candidates", authMiddleware, candidateRoutes);
+app.use("/api/votes", authMiddleware, voteRoutes);
 
 // Conexión a MongoDB
 mongoose.connect(process.env.MONGO_URI)
